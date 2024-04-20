@@ -18,9 +18,18 @@ class Product(models.Model):
     digital = models.BooleanField(default=False, null=True, blank=True)
     product_description = models.TextField(max_length=400, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    alt = models.TextField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ""
+        return url
 
 
 class Order(models.Model):
