@@ -1,36 +1,55 @@
 {% extends "store/main.html" %}
 {% load static %}
 {% load compress %}
-
 {% block content %}
 
-    <div class="section-store py-10">
-        <div class="div-cart bg-base-100 py-10 px-5 rounded-xl">
-            <button class="btn btn-primary">Primary</button>
-            <hr class="bg-black">
-            <div class="flex justify-between">
-                <h2>Items: </h2>
-                <h2>Total: </h2>
-                <button class="btn btn-accent">Accent</button>
-            </div>
-            <div class="py-5">
-                <div class="flex justify-between">
-                    <h2>Item</h2>
-                    <h2>Price</h2>
-                    <h2>Quantity</h2>
-                    <h2>Total</h2>
-                    <hr class="bg-black">
-                </div>
-                <div class="flex justify-between w-full">
-                    <img src="" alt="">
-                    <h2>Product</h2>
-                    <h2>$20</h2>
-                    <h2>2</h2>
-                    <h2>#32</h2>
-                    <hr>
-                </div>
-            </div>
-        </div>
+<div class="min-h-screen py-10">
+  <div class="div-cart bg-base-100 py-10 px-5 rounded-xl">
+    <button class="btn btn-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="15px"
+        height="15px"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="m4 10l-.707.707L2.586 10l.707-.707zm17 8a1 1 0 1 1-2 0zM8.293 15.707l-5-5l1.414-1.414l5 5zm-5-6.414l5-5l1.414 1.414l-5 5zM4 9h10v2H4zm17 7v2h-2v-2zm-7-7a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5z"
+        /></svg
+      >Continue Shopping
+    </button>
+    <hr class="bg-black my-6" />
+    <div
+      class="flex justify-center items-center content-center justify-items-center gap-28"
+    >
+      <h2>Items: {{ order.get_cart_items }}</h2>
+      <h2>Total: ${{ order.get_cart_total|floatformat:2 }}</h2>
+      <a href="/checkout" class="btn btn-accent">Checkout</a>
     </div>
-
+    <hr class="bg-black my-6" />
+    {% for item in items %}
+    <div class="cart-box py-5 text-center">
+      <div>
+        <img class="cart-image" src="{{ item.product.imageURL }}" alt="" />
+      </div>
+      <div>
+        <h2>Item</h2>
+        <h2>{{ item.product.name }}</h2>
+      </div>
+      <div>
+        <h2>Price</h2>
+        <h2>${{ item.product.price|floatformat:2 }}</h2>
+      </div>
+      <div>
+        <h2>Quantity</h2>
+        <h2>{{ item.quantity }}</h2>
+      </div>
+      <div>
+        <h2>Total</h2>
+        <h2>${{ item.get_total }}</h2>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock content %}

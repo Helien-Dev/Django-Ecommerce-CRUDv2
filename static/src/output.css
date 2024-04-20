@@ -1868,6 +1868,10 @@ html {
   margin: 0.5rem;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .-mx-2 {
   margin-left: -0.5rem;
   margin-right: -0.5rem;
@@ -1990,6 +1994,14 @@ html {
   height: 1px;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-1\/6 {
   width: 16.666667%;
 }
@@ -2034,8 +2046,16 @@ html {
   width: 100%;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-\[1000px\] {
+  max-width: 1000px;
 }
 
 .flex-shrink-0 {
@@ -2075,8 +2095,20 @@ html {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.content-center {
+  align-content: center;
 }
 
 .items-center {
@@ -2095,8 +2127,20 @@ html {
   justify-content: space-between;
 }
 
+.justify-items-center {
+  justify-items: center;
+}
+
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.gap-28 {
+  gap: 7rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2299,12 +2343,46 @@ html {
   padding-bottom: 1.25rem;
 }
 
+.px-11 {
+  padding-left: 2.75rem;
+  padding-right: 2.75rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
 .pl-11 {
   padding-left: 2.75rem;
 }
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .text-left {
