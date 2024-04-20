@@ -6,6 +6,16 @@ body {
     height: 100%;
 }
 
+.section-store {
+    min-height: 100vh;
+}
+
+.div-cart {
+    max-width: 1000px;
+    margin: auto;
+    width: 100%;
+}
+
 .product_grid {
     display: grid;
     max-width: 1000px;

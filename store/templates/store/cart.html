@@ -1,0 +1,36 @@
+{% extends "store/main.html" %}
+{% load static %}
+{% load compress %}
+
+{% block content %}
+
+    <div class="section-store py-10">
+        <div class="div-cart bg-base-100 py-10 px-5 rounded-xl">
+            <button class="btn btn-primary">Primary</button>
+            <hr class="bg-black">
+            <div class="flex justify-between">
+                <h2>Items: </h2>
+                <h2>Total: </h2>
+                <button class="btn btn-accent">Accent</button>
+            </div>
+            <div class="py-5">
+                <div class="flex justify-between">
+                    <h2>Item</h2>
+                    <h2>Price</h2>
+                    <h2>Quantity</h2>
+                    <h2>Total</h2>
+                    <hr class="bg-black">
+                </div>
+                <div class="flex justify-between w-full">
+                    <img src="" alt="">
+                    <h2>Product</h2>
+                    <h2>$20</h2>
+                    <h2>2</h2>
+                    <h2>#32</h2>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
