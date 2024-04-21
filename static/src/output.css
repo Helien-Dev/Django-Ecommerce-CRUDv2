@@ -2367,10 +2367,6 @@ html {
 }
 
 @media (min-width: 640px) {
-  .sm\:h-7 {
-    height: 1.75rem;
-  }
-
   .sm\:w-1\/6 {
     width: 16.666667%;
   }
