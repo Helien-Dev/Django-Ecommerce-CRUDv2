@@ -29,8 +29,6 @@ body {
 .cart-box svg{
     width: 20px;
     height: 20px;
-    display: flex;
-    text-align: center;
 }
 
 .cart-image {
