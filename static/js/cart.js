@@ -15,7 +15,7 @@ for (let i = 0; i < updateBtns.length; i++) {
   });
 }
 
-function updateUserOrder(productId, action) {
+async function updateUserOrder(productId, action)  {
   console.log("User is authenticated, sending data...");
 
   const url = "/update_item/";
