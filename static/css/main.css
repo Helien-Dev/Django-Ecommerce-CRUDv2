@@ -56,6 +56,10 @@ body {
     align-items: center;
 }
 
+.background-image {
+    background-image: url(https://verdecora.es/blog/wp-content/uploads/2016/01/plantas-suculentas-cuidados.jpg.webp);
+}
+
 /* UI/UX STORE */
 
 @media screen and (max-width: 1000px) {
