@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 import json
 from .models import *
@@ -19,6 +19,7 @@ def client_support(request):
     context = {}
     return render(request, 'store/client_support.html', context)
 
+
 def store(request):
 
     if request.user.is_authenticated:
@@ -35,6 +36,10 @@ def store(request):
     context = {"products": products, "cartItems": cartItems}
     return render(request, "store/store.html", context)
 
+
+def product_detail(request, slug):
+    product_slug = get_object_or_404(Product, slug=slug)
+    return render(request, 'store/product_detail.html', {'product_slug': product_slug})
 
 def cart(request):
 

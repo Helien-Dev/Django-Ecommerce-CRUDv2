@@ -14,7 +14,7 @@
         <p>{{ product.product_description }}</p>
         <div class="card-actions justify-end">
           <button data-product="{{ product.id }}" data-action="add" class="btn btn-primary update-cart">Add to cart</button>
-          <button class="btn btn-primary">View</button>
+          <a href="{% url 'product_detail' slug=product.slug %}" class="btn btn-primary">View</a>
         </div>
       </div>
     </div>

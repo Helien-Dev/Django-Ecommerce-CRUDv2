@@ -1,0 +1,10 @@
+{% extends "store/main.html" %}
+{% load static %}
+{% load compress %}
+
+{% block content %}
+
+    <h1>{{ product_slug.name }}</h1>
+    <p>{{ product_slug.product_description }}</p>
+
+{% endblock content %}

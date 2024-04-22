@@ -23,7 +23,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.nombre)  # Genera el slug a partir del nombre
+        self.slug = slugify(self.name)  
         super().save(*args, **kwargs)
 
     def __str__(self):
