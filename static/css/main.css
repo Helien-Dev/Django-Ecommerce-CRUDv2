@@ -57,7 +57,20 @@ body {
 }
 
 .background-image {
-    background-image: url(https://verdecora.es/blog/wp-content/uploads/2016/01/plantas-suculentas-cuidados.jpg.webp);
+    background-image: url('https://jardincelas.com/wp-content/uploads/2016/07/suculentas-portada.jpg');
+    background-size: cover; /* or '100%', 'auto' */
+    background-repeat: no-repeat;
+    height: 180px;
+}
+
+.btn-landing {
+    max-width: 150px;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 /* UI/UX STORE */

@@ -10,6 +10,15 @@ def landingPage(request):
     context = {}
     return render(request, 'store/landingPage.html', context)
 
+def about_us(request):
+    context = {}
+    return render(request, 'store/about-us.html', context)
+
+
+def client_support(request):
+    context = {}
+    return render(request, 'store/client_support.html', context)
+
 def store(request):
 
     if request.user.is_authenticated:
