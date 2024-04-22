@@ -5,6 +5,11 @@ from .models import *
 
 
 # Create your views here.
+
+def landingPage(request):
+    context = {}
+    return render(request, 'store/landingPage.html', context)
+
 def store(request):
 
     if request.user.is_authenticated:
