@@ -4,99 +4,59 @@
 {% block content %}
 
 <section class="section-store">
-  <div class="max-w-[1000px] m-auto w-full py-6">
-    <div
-      class="bg-base-100 mt-8 space-y-3 rounded-2xl border px-2 py-4 sm:px-6"
-    >
-      {% for item in items%}
-      <hr class="bg-black" />
-      <div class="flex flex-col rounded-lg bg-base-100 sm:flex-row">
-        <img
-          class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-          src="{{ item.product.imageURL }}"
-          alt=""
-        />
-        <div class="flex w-full flex-col px-4 py-4">
-          <span class="font-semibold">{{ item.product.name }}</span>
-          <span class="float-right text-gray-400"
-            >${{ item.product.price|floatformat:2 }}</span
-          >
-          <p class="text-lg font-bold">Quantity: {{ item.quantity }}</p>
-          <p class="text-lg font-bold">${{ item.get_total }}</p>
-        </div>
+  <div class="bg-base-100 max-w-[1000px] m-auto w-full text-center px-10 py-5 my-10 rounded-2xl">
+      <h3 class="font-bold text-white my-8">Order Summary</h3>
+      <hr>
+
+      {% for item in items %}
+      
+      <div class="order-summary text-center font-bold text-white">
+        <div class="flex my-10"><img src="{{ item.product.imageURL }}" alt=""></div>
+        <div><p>{{ item.product.name }}</p></div>
+        <div><p>{{ item.quantity }}</p></div>
+        <div><p>${{ item.product.price|floatformat:2 }}</p></div>
       </div>
-      <hr class="bg-black" />
+
       {% endfor %}
-    </div>
-
-    <!-- Shipping and payment -->
-
-    <div
-      class="max-w-[1000px] m-auto w-full py-10 my-11 bg-base-100 rounded-2xl"
-    >
-      <div id="shipping-info" class="grid grid-cols-2 px-6 m-auto w-full">
-        <form >
-          <div class="py-5 px-5 bg-slate-200 rounded-xl">
-            <h2>Shipping Information</h2>
-            <label for="name">Name:</label>
-            <input type="text" name="name" required />
-
-            <label for="address">Address:</label>
-            <input type="text" name="address" required />
-
-            <label for="city">City:</label>
-            <input type="text" name="city" required />
-
-            <label for="state">State:</label>
-            <select name="state">
-              <option value="">Select a state</option>
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <!-- add more options as needed -->
-            </select>
-
-            <label for="zip">Zip:</label>
-            <input type="text" name="zip" required />
-
-            <label for="country">Country:</label>
-            <select name="country">
-              <option value="">Select a country</option>
-              <option value="USA">United States of America</option>
-              <!-- add more options as needed -->
-            </select>
-
-            <label for="shipping-method">Shipping Method:</label>
-            <input
-              type="radio"
-              id="ground-shipping"
-              name="shipping-method"
-              value="Ground"
-            />
-            <label for="ground-shipping">Ground Shipping ($10)</label><br />
-            <input
-              type="radio"
-              id="air-shipping"
-              name="shipping-method"
-              value="Air"
-            />
-            <label for="air-shipping">Air Shipping ($20)</label><br />
-            <input
-              type="radio"
-              id="express-shipping"
-              name="shipping-method"
-              value="Express"
-            />
-            <label for="express-shipping">Express Shipping ($30)</label>
-
-          </div>
-          
-        </form>
-      </div>
-      <button>${{ order.get_cart_total|floatformat:2 }}</button>
-      <button type="submit">Submit</button>
-      <button type="reset">Reset</button>
-    </div>
   </div>
+
+  <div id="shipping-info" class="bg-base-100 max-w-[1000px] m-auto w-full text-center px-10 py-5 my-10 rounded-2xl text-white">
+    <form class="flex flex-col justify-center items-center max-w-md mx-auto p-4 rounded-2xl">
+      <!-- Form Fields -->
+      <label for="name" class="block text-sm">Name:</label>
+      <input type="text" id="name" class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600">
+
+      <label for="address" class="block text-sm">Address:</label>
+      <textarea id="address" class="block w-full h-20 px-2 py-1  placeholder-gray-400 focus:outline-none focus:ring-green-600"></textarea>
+
+      <label for="city" class="block text-sm">City:</label>
+      <input type="text" id="city" class="block w-full h-12 px-2 py-1  placeholder-gray-400 focus:outline-none focus:ring-green-600">
+
+      <label for="state" class="block text-sm">State:</label>
+      <select id="state" class="block w-full h-12 px-2 py-1 border-none appearance-none">
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AK">Alaska</option>
+        <option value="AK">Alaska</option>
+        <option value="AK">Alaska</option>
+        <option value="AK">Alaska</option>
+        <option value="AK">Alaska</option>
+        <!-- ... -->
+      </select>
+
+      <label for="zip" class="block text-sm">Zip:</label>
+      <input type="text" id="zip" class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600">
+
+      <!-- Submit Button -->
+      <button id="form-button" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+      <div class="hidden" id="payment-info">
+          <small>Paypal Options</small>
+          <!--<button id="make-payment">Make payment</button>-->
+          <div id="paypal-button-container"></div>
+      </div>
+    </form>
+  </div>
+
 </section>
 
 <script type="text/javascript">
@@ -117,4 +77,3 @@
 </script>
 
 {% endblock content %} 
-{% comment %} {%endcomment %}

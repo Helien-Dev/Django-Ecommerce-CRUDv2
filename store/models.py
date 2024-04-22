@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -19,6 +20,11 @@ class Product(models.Model):
     product_description = models.TextField(max_length=400, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     alt = models.TextField(max_length=100, null=True, blank=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nombre)  # Genera el slug a partir del nombre
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -43,16 +49,15 @@ class Order(models.Model):
     def __int__(self):
         return self.id
 
-
     @property
     def shipping(self):
         shipping = False
         orderitems = self.orderitem_set.all()
-        
+
         for i in orderitems:
             if i.product.digital == False:
                 shipping = True
-        
+
         return shipping
 
     @property
