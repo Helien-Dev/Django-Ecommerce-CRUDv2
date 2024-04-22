@@ -4,76 +4,104 @@
 {% block content %}
 
 <section class="section-store">
-  <div class="bg-base-100 max-w-[1000px] m-auto w-full text-center px-10 py-5 my-10 rounded-2xl">
-      <h3 class="font-bold text-4xl text-white my-8">Order Summary</h3>
-      <hr>
+  <div
+    class="bg-base-100 max-w-[1000px] m-auto w-full text-center px-10 py-5 my-10 rounded-2xl"
+  >
+    <h3 class="font-bold text-4xl text-white my-8">Order Summary</h3>
+    <hr />
+    {% for item in items %}
 
-      {% for item in items %}
-      
-      <div class="order-summary text-center font-bold text-white">
-        <div class="flex my-10"><img src="{{ item.product.imageURL }}" alt=""></div>
-        <div><p>{{ item.product.name }}</p></div>
-        <div><p>{{ item.quantity }}</p></div>
-        <div><p>${{ item.product.price|floatformat:2 }}</p></div>
+    <div class="order-summary text-center font-bold text-white">
+      <div class="flex my-10">
+        <img src="{{ item.product.imageURL }}" alt="" />
       </div>
+      <div><p>{{ item.product.name }}</p></div>
+      <div><p>{{ item.quantity }}</p></div>
+      <div><p>${{ item.product.price|floatformat:2 }}</p></div>
+    </div>
 
-      {% endfor %}
+    {% endfor %}
   </div>
 
-  <div id="shipping-info" class="bg-base-100 max-w-[1000px] m-auto w-full text-center px-10 py-5 my-10 rounded-2xl text-white">
-    <form class="flex flex-col justify-center items-center max-w-md mx-auto p-4 rounded-2xl">
+  <div
+    id="form-wrapper"
+    class="bg-base-100 max-w-[1000px] m-auto w-full text-center px-10 py-5 my-10 rounded-2xl text-white"
+  >
+    <form
+      id="form"
+      class="flex flex-col justify-center items-center max-w-md mx-auto p-4 rounded-2xl"
+    >
       <!-- Form Fields -->
-      <label for="name" class="block text-sm">Name:</label>
-      <input type="text" id="name" class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600">
+      <div id="user-info">
+        <label for="name" class="block text-sm">Name:</label>
+        <input
+          type="text"
+          id="name"
+          class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600"
+        />
 
-      <label for="address" class="block text-sm">Address:</label>
-      <textarea id="address" class="block w-full h-20 px-2 py-1  placeholder-gray-400 focus:outline-none focus:ring-green-600"></textarea>
+        <label for="email" class="block text-sm">Email:</label>
+        <input
+          type="text"
+          id="name"
+          class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600"
+        />
+      </div>
 
-      <label for="city" class="block text-sm">City:</label>
-      <input type="text" id="city" class="block w-full h-12 px-2 py-1  placeholder-gray-400 focus:outline-none focus:ring-green-600">
+      <div id="shipping-info" class="pb-10">
+        <label for="address" class="block text-sm">Address:</label>
+        <textarea
+          id="address"
+          class="block w-full h-20 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600"
+        ></textarea>
 
-      <label for="state" class="block text-sm">State:</label>
-      <select id="state" class="block w-full h-12 px-2 py-1 border-none appearance-none">
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AK">Alaska</option>
-        <option value="AK">Alaska</option>
-        <option value="AK">Alaska</option>
-        <option value="AK">Alaska</option>
-        <option value="AK">Alaska</option>
-        <!-- ... -->
-      </select>
+        <label for="city" class="block text-sm">City:</label>
+        <input
+          type="text"
+          id="city"
+          class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600"
+        />
 
-      <label for="zip" class="block text-sm">Zip:</label>
-      <input type="text" id="zip" class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600">
+        <label for="state" class="block text-sm">State:</label>
+        <select
+          id="state"
+          class="block w-full h-12 px-2 py-1 border-none appearance-none"
+        >
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AK">Alaska</option>
+          <option value="AK">Alaska</option>
+          <option value="AK">Alaska</option>
+          <option value="AK">Alaska</option>
+          <option value="AK">Alaska</option>
+          <!-- ... -->
+        </select>
+
+        <label for="zip" class="block text-sm">Zip:</label>
+        <input
+          type="text"
+          id="zip"
+          class="block w-full h-12 px-2 py-1 placeholder-gray-400 focus:outline-none focus:ring-green-600"
+        />
+      </div>
 
       <!-- Submit Button -->
-      <button id="form-button" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+      <button
+        id="form-button"
+        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Submit
+      </button>
       <div class="hidden" id="payment-info">
-          <small>Paypal Options</small>
-          <!--<button id="make-payment">Make payment</button>-->
-          <div id="paypal-button-container"></div>
+        <small>Paypal Options</small>
+        <button class="btn btn-primary" id="make-payment">Make payment</button>
+        <div id="paypal-button-container"></div>
       </div>
     </form>
   </div>
-
 </section>
 
-<script type="text/javascript">
-  var shipping = "{{ order.shipping }}";
+<script src="{% static 'js/shipping.js' %}"></script>
+<script src="{% static 'js/cart-buttons.js' %}"></script>
 
-  if (shipping == "False") {
-    document.getElementById("shipping-info").innerHTML = "";
-  }
-
-  var form = document.getElementById('form')
-  form.addEventListener('submit', function(e){
-    e.preventDefault()
-    console.log('Form submitted...')
-    document.getElementById('form-button').classList.add('hidden')
-    document.getElementById('payment-info').classList.remove('hidden')
-  })
-
-</script>
-
-{% endblock content %} 
+{% endblock content %}

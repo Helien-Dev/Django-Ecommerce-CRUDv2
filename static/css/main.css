@@ -85,8 +85,8 @@ body {
 
 .order-summary img {
     object-fit: fill;
-    height: 130px;
-    width: 180px;
+    height: 80px;
+    width: 100px;
     border-radius: 16px;
 }
 
